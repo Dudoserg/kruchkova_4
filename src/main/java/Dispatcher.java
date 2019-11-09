@@ -1,25 +1,17 @@
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.concurrent.Exchanger;
+import java.util.concurrent.BlockingQueue;
 
 //@Data
-public class Dispatcher extends Person {
-
-    private Exchanger<Message> EXCHANGER;
+public class Dispatcher extends  Person implements Runnable{
 
 
-    @Getter
-    @Setter
-    private String message;
+    BlockingQueue<Message> blocking_Buyer_Dispatcher;
+    BlockingQueue<Message> blocking_Dispatcher_Buyer;
 
 
-    public Dispatcher(Exchanger<Message> exchanger, String name) {
-        super(PersonType.DISPATCHER, name);
-        this.EXCHANGER = exchanger;
+    public Dispatcher(BlockingQueue<Message> blocking_Dispatcher_Buyer , BlockingQueue<Message> blocking_Buyer_Dispatcher, String name) {
+        super(PersonType.BUYER, name);
+        this.blocking_Dispatcher_Buyer = blocking_Dispatcher_Buyer;
+        this.blocking_Buyer_Dispatcher = blocking_Buyer_Dispatcher;
     }
 
 
@@ -27,25 +19,18 @@ public class Dispatcher extends Person {
     public void run() {
         while (true) {
             try {
-
-                Message receivedMessage = EXCHANGER.exchange(null);
-
-                System.out.println(LocalTime.now().toString() + " " + super.getPersonName() + " получил следующее сообщение: '" +
-                        receivedMessage.getMessage() + "' От " + receivedMessage.getPerson().getPersonName());
-
-                switch (receivedMessage.getPerson().getPersonType()){
+                Message take = blocking_Buyer_Dispatcher.take();
+                switch (take.getPerson().getPersonType()){
                     case BUYER:{
-                        EXCHANGER.
-                        break;
-                    }
-                    case COURIER:{
                         break;
                     }
                     case COOK:{
                         break;
                     }
+                    case COURIER:{
+                        break;
+                    }
                 }
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

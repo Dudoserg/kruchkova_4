@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Exchanger;
 
 public class Main {
@@ -14,19 +16,22 @@ public class Main {
 
     public Main() {
 
-        Dispatcher dispatcher = new Dispatcher(EXCHANGER,"dispatcher");
-        Buyer buyer_1 = new Buyer(EXCHANGER, "buyer_1");
-        Buyer buyer_2 = new Buyer(EXCHANGER, "buyer_2");
-        Buyer buyer_3 = new Buyer(EXCHANGER, "buyer_3");
+        BlockingQueue<Message> blocking_Dispatcher_Buyer = new ArrayBlockingQueue<Message>(1, true);
+        BlockingQueue<Message> blocking_Buyer_Dispatcher = new ArrayBlockingQueue<Message>(1, true);
+
+
+        Dispatcher dispatcher = new Dispatcher(blocking_Dispatcher_Buyer, blocking_Buyer_Dispatcher, "dispatcher");
+        FF buyer_1 = new Buyer(blocking_Buyer_Dispatcher, blocking_Dispatcher_Buyer, "buyer_1");
+
+
+
 
         List<Thread> list = new ArrayList<>();
         list.add(dispatcher);
         list.add(buyer_1);
-        list.add(buyer_2);
-        list.add(buyer_3);
 
 
-        for(int i = 0 ; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             list.get(i).start();
         }
 
