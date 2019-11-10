@@ -17,11 +17,24 @@ public class Dispatcher extends  Person implements Runnable{
 
     @Override
     public void run() {
-        while (true) {
+        //while (true) {
             try {
-                Message take = blocking_Buyer_Dispatcher.take();
-                switch (take.getPerson().getPersonType()){
+                Main.print(super.getPersonName() + " ждет какое либо сообщение");
+                Message messageTaked = blocking_Buyer_Dispatcher.take();
+
+                switch (messageTaked.getPerson().getPersonType()){
                     case BUYER:{
+                        Main.print(super.getPersonName() + " получил сообщение от покупателя " + messageTaked.getPerson().getPersonName() );
+
+                        Main.print(super.getPersonName() + " диспетчер обрабатывает заказ в течении 5 секунд....");
+                        sleep((int) (1000 * 5));    //      sleep((int) (Math.random() * 1000 * 5));
+                        Main.print(super.getPersonName() + "диспетчер обработал заказ");
+
+                        Message messageForBuyer = new Message(this, "пицца готовая()");
+                        Main.print(super.getPersonName() + "диспетчер отвечает покупателю");
+                        blocking_Dispatcher_Buyer.put(messageForBuyer);
+
+
                         break;
                     }
                     case COOK:{
@@ -34,6 +47,6 @@ public class Dispatcher extends  Person implements Runnable{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
+        //}
     }
 }
