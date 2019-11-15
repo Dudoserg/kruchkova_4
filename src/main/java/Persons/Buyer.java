@@ -1,7 +1,9 @@
-package kek;
+package Persons;
 
 import Message.Message_Base;
 import Start.Main;
+import kek.Person;
+import kek.PersonType;
 
 import java.util.concurrent.BlockingQueue;
 

@@ -1,7 +1,9 @@
-package kek;
+package Persons;
 
 import Message.Message_Base;
 import Start.Main;
+import kek.Person;
+import kek.PersonType;
 
 import java.util.concurrent.BlockingQueue;
 
@@ -45,12 +47,12 @@ public class Dispatcher extends Person implements Runnable {
                 switch (messageBaseTaked.getPerson().getPersonType()) {
                     case BUYER: {
                         Main.print(super.getPersonName() + " получил сообщение от покупателя " + messageBaseTaked.getPerson().getPersonName());
-
+                        sleep(1500);
                         Main.print(super.getPersonName() + " диспетчер обрабатывает заказ в течении 5 секунд....");
                         sleep((int) (1000 * 5));    //      sleep((int) (Math.random() * 1000 * 5));
                         blocking_To_Cook.put(new Message_Base(this, messageBaseTaked.getMessage()));
                         Main.print(super.getPersonName() + "диспетчер обработал заказ, передав его повару");
-
+                        sleep(1500);
 //                            Message_Base.Message_Base messageForBuyer = new Message_Base.Message_Base(this, "пицца готовая()");
 //                            Start.Main.print(super.getPersonName() + "диспетчер отвечает покупателю");
 //                            blocking_To_Buyer.put(messageForBuyer);

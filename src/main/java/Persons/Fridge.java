@@ -1,7 +1,10 @@
-package kek;
+package Persons;
 
 import Message.Message_Fridge;
 import Start.Main;
+import kek.Person;
+import kek.PersonType;
+import kek.Products;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,12 +37,15 @@ public class Fridge extends Person implements Runnable {
     public void run() {
         try {
             Main.print(super.getPersonName() + " ждет какое либо сообщение...");
+            sleep(1500);
             Message_Fridge takedMessage = blocking_To_Fridge.take();
             Main.print(super.getPersonName() + " Получил сообщение от повара ");
+            sleep(1500);
 
             Message_Fridge messageToCook = new Message_Fridge();
             boolean flag_enough_products = true;
             Main.print(super.getPersonName() + " Начинаем проверку присутствия продуктов...");
+            sleep(1500);
             for(Map.Entry<Products, Integer> current : takedMessage.getCountProducts().entrySet()){
                 Products needProduct = current.getKey();
                 Integer needCount = current.getValue();
@@ -56,7 +62,7 @@ public class Fridge extends Person implements Runnable {
             }
 
             Main.print(super.getPersonName() + " Проверка закончена ");
-
+            sleep(1500);
 
             if(flag_enough_products){
                 // Всех продуктов хватает
@@ -73,11 +79,13 @@ public class Fridge extends Person implements Runnable {
                 }
                 messageToCook.setStatus(1);
                 Main.print(super.getPersonName() + " Необходимые продукты в наличии, отправляем их повару ");
+                sleep(1500);
             }
             else {
                 // Какого то продукта не хватает
                 messageToCook.setStatus(0);
                 Main.print(super.getPersonName() + " Нет одного из необходимых продуктов, ничего не отправляем повару ");
+                sleep(1500);
             }
             blocking_To_Cook.put(messageToCook);
 

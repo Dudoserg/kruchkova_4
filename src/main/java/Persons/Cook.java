@@ -1,8 +1,11 @@
-package kek;
+package Persons;
 
 import Message.Message_Base;
 import Message.Message_Fridge;
 import Start.Main;
+import kek.Person;
+import kek.PersonType;
+import kek.Products;
 
 import java.util.HashMap;
 import java.util.concurrent.BlockingQueue;
@@ -38,8 +41,10 @@ public class Cook extends Person implements Runnable {
         try {
 
             Main.print(super.getPersonName() + " ждет какое либо сообщение...");
+            sleep(1500);
             final Message_Base messageBaseFromDispatcher = blocking_Dispatcher_Cook.take();
             Main.print(super.getPersonName() + " Получил сообщение: " + messageBaseFromDispatcher.getMessage() + " от " + messageBaseFromDispatcher.getPerson().getPersonName());
+            sleep(1500);
 
             Main.print(super.getPersonName() + " Вспоминает рецепт...");
             sleep(2500);
@@ -55,6 +60,7 @@ public class Cook extends Person implements Runnable {
                     pizza.getCountProducts().put(Products.Cheese, 100);
 
                     Main.print(super.getPersonName() + " обращается к холодильнику за ингридиентами " );
+                    sleep(1500);
                     blocking_To_Fridge.put(pizza);
 
                     break;
@@ -66,6 +72,7 @@ public class Cook extends Person implements Runnable {
                     burger.getCountProducts().put(Products.Tomatoes, 50);
 
                     Main.print(super.getPersonName() + " обращается к холодильнику за ингридиентами " );
+                    sleep(1500);
                     blocking_To_Fridge.put(burger);
 
                     break;
@@ -73,22 +80,26 @@ public class Cook extends Person implements Runnable {
                 default:{
 
                     Main.print(super.getPersonName() + " Такого блюда НЕ СУЩЕСТВУЕТ!! ОШИБКА");
-
+                    sleep(1500);
                 }
 
             }
             // Ждем ответа холодильника
             Main.print(super.getPersonName() + " Ждет ответа от холодильника");
+            sleep(1500);
             final Message_Fridge messageFromFridge = blocking_Fridge_Cook.take();
             Main.print(super.getPersonName() + " Ответ от холодильника пришел");
+            sleep(1500);
 
             if(messageFromFridge.getStatus() == 1){
                 // Все окей готовим
                 Main.print(super.getPersonName() + " Ответ положительный, продукты есть, начинаем готовить...");
+                sleep(1500);
                 String result = coocking(messageFromFridge.getCountProducts(), messageBaseFromDispatcher.getMessage());
                 // Шлем сообщение курьеру
                 Main.print(super.getPersonName() + " Шлем сообщение курьеру" );
-                Message_Base messageBaseToCourier = new Message_Base(this, "Пицца");
+                sleep(1500);
+                Message_Base messageBaseToCourier = new Message_Base(this, new String(messageBaseFromDispatcher.getMessage() + " готовая").toUpperCase());
                 blocking_To_Courier.put(messageBaseToCourier);
 
             }else {
@@ -97,6 +108,7 @@ public class Cook extends Person implements Runnable {
                 // Шлем сообщение диспетчеру
                 Message_Base messageBaseToDispatcher = new Message_Base(this, "Не хватает ингридиентов");
                 Main.print(super.getPersonName() + " Шлет сообщение диспетчеру: " + messageBaseToDispatcher.getMessage() );
+                sleep(1500);
                 blocking_To_Dispatcher.put(messageBaseToDispatcher);
             }
 
@@ -108,9 +120,13 @@ public class Cook extends Person implements Runnable {
     }
 
     private String coocking(HashMap<Products, Integer> Products, String product) throws InterruptedException {
-        Main.print(super.getPersonName() + " Готовит блюдо в течении 10 сек... " );
-        sleep(1000 * 10);
+        int timeSleep = (int) (Math.random() * 10) + 5;
+        for(int i = 0 ; i < timeSleep; i++){
+            Main.print(super.getPersonName() + " Готовит блюдо.... " );
+            sleep(1000);
+        }
         Main.print(super.getPersonName() + " Блюдо готово " );
+        sleep(1500);
         return product;
     }
 }

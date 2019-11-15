@@ -4,6 +4,7 @@ package Start;
 
 import Message.Message_Base;
 import Message.Message_Fridge;
+import Persons.*;
 import kek.*;
 
 import java.time.LocalTime;
@@ -42,7 +43,6 @@ public class Main {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 
 
@@ -61,6 +61,7 @@ public class Main {
         Person buyer_1 = new Buyer(blocking_To_Buyer, blocking_To_Dispatcher,  "buyer_1");
         Person cook = new Cook(blocking_Dispatcher_Cook, blocking_Fridge_Cook, blocking_To_Dispatcher, blocking_To_Fridge,blocking_To_Courier, "cook");
         Person fridge = new Fridge(blocking_To_Fridge, blocking_Fridge_Cook, "fridge");
+        Person courier = new Courier(blocking_To_Courier, blocking_To_Dispatcher, "courier");
 
 //        ((Dispatcher) dispatcher).setByuer((Buyer) buyer_1);
 
@@ -70,6 +71,7 @@ public class Main {
         list_Runnable.add(buyer_1);
         list_Runnable.add(cook);
         list_Runnable.add(fridge);
+        list_Runnable.add(courier);
 
         // Список потоков
         List<Thread> list_Thread =list_Runnable.stream().map(runnable -> new Thread(runnable)).collect(Collectors.toList());
