@@ -1,3 +1,5 @@
+package kek;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

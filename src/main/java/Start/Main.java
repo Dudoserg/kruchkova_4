@@ -1,6 +1,11 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+package Start;
+
+
+
+import Message.Message_Base;
+import Message.Message_Fridge;
+import kek.*;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +20,10 @@ public class Main {
         Main main = new Main();
     }
 
-    private static final Exchanger<Message> EXCHANGER = new Exchanger<>();
+    private static final Exchanger<Message_Base> EXCHANGER = new Exchanger<>();
 
     public static Semaphore semaphorePrint = new Semaphore(1,true);
+
     public static void print(String str){
         try {
             LocalTime localTime = LocalTime.now();
@@ -42,18 +48,28 @@ public class Main {
 
     public Main() {
 
-        BlockingQueue<Message> blocking_Dispatcher_Buyer = new ArrayBlockingQueue<Message>(1, true);
-        BlockingQueue<Message> blocking_Buyer_Dispatcher = new ArrayBlockingQueue<Message>(1, true);
+        BlockingQueue<Message_Base> blocking_To_Buyer = new ArrayBlockingQueue<Message_Base>(1, true);
+        BlockingQueue<Message_Base> blocking_To_Dispatcher = new ArrayBlockingQueue<Message_Base>(1, true);
 
-        Person dispatcher = new Dispatcher(blocking_Dispatcher_Buyer, blocking_Buyer_Dispatcher, "dispatcher");
-        Person buyer_1 = new Buyer(blocking_Buyer_Dispatcher, blocking_Dispatcher_Buyer, "buyer_1");
+        BlockingQueue<Message_Base> blocking_Dispatcher_Cook = new ArrayBlockingQueue<Message_Base>(1, true);
+        BlockingQueue<Message_Fridge> blocking_Fridge_Cook = new ArrayBlockingQueue<Message_Fridge>(1, true);
 
+        BlockingQueue<Message_Base> blocking_To_Courier = new ArrayBlockingQueue<Message_Base>(1, true);
+        BlockingQueue<Message_Fridge> blocking_To_Fridge = new ArrayBlockingQueue<Message_Fridge>(1, true);
 
+        Person dispatcher = new Dispatcher( blocking_To_Dispatcher, blocking_To_Buyer, blocking_Dispatcher_Cook, "dispatcher");
+        Person buyer_1 = new Buyer(blocking_To_Buyer, blocking_To_Dispatcher,  "buyer_1");
+        Person cook = new Cook(blocking_Dispatcher_Cook, blocking_Fridge_Cook, blocking_To_Dispatcher, blocking_To_Fridge,blocking_To_Courier, "cook");
+        Person fridge = new Fridge(blocking_To_Fridge, blocking_Fridge_Cook, "fridge");
+
+//        ((Dispatcher) dispatcher).setByuer((Buyer) buyer_1);
 
         // Список задач
         List<Runnable> list_Runnable = new ArrayList<>();
         list_Runnable.add(dispatcher);
         list_Runnable.add(buyer_1);
+        list_Runnable.add(cook);
+        list_Runnable.add(fridge);
 
         // Список потоков
         List<Thread> list_Thread =list_Runnable.stream().map(runnable -> new Thread(runnable)).collect(Collectors.toList());
@@ -62,7 +78,7 @@ public class Main {
         for (int i = 0; i < list_Thread.size(); i++) {
             list_Thread.get(i).start();
         }
-
+        System.out.println(Products.Mushrooms.toString());
         System.out.println("end of MAIN");
 
     }
