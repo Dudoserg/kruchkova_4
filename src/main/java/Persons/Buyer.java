@@ -39,9 +39,16 @@ public class Buyer extends Person implements Runnable {
 //                    Start.Main.print(super.getPersonName() + " окончил спать");
 //                    wait();
 
-                    Message_Base messageBaseForDispatcher = new Message_Base(this, "пицца");
+                    String order = "пицца";
+                    if(Math.random() > 0.5){
+                        order = "пицца";
+                    }else {
+                        order = "бургер";
+                    }
 
-                    Main.print(super.getPersonName() + " посылает сообщение диспетчеру" + "Текст сообщения: " + "пицца");
+                    Message_Base messageBaseForDispatcher = new Message_Base(this, order);
+
+                    Main.print(super.getPersonName() + " посылает сообщение диспетчеру" + "Текст сообщения: " + order);
                     blocking_To_Dispatcher.put(messageBaseForDispatcher);
 
                     Main.print(super.getPersonName() + " начинает ожидать ответа от Диспетчера или курьера....");

@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1888bb2c-cad6-4cc0-86fd-dfcdb0f8baf1" name="Default Changelist" comment="1">
+    <list default="true" id="1888bb2c-cad6-4cc0-86fd-dfcdb0f8baf1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Persons/Buyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Persons/Buyer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Persons/Cook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Persons/Cook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Persons/Courier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Persons/Courier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Persons/Dispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Persons/Dispatcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Persons/Fridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Persons/Fridge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Start/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Start/Main.java" afterDir="false" />
     </list>
@@ -32,11 +29,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Start/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="61" column="75" selection-start-line="61" selection-start-column="67" selection-end-line="61" selection-end-column="84" />
+            <state relative-caret-position="307">
+              <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#print#0;class#Main#0" expanded="true" />
+                <element signature="method#Main#0;class#Main#0" expanded="true" />
+                <element signature="e#1694#1708#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Persons/Dispatcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="69" column="45" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="45" />
+            <state relative-caret-position="347">
+              <caret line="57" column="46" lean-forward="true" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Dispatcher#0;class#Dispatcher#0" expanded="true" />
@@ -74,7 +73,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Persons/Cook.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
+            <state relative-caret-position="-6">
               <caret line="39" selection-start-line="39" selection-end-line="40" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -84,28 +83,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Persons/Fridge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="94" column="9" lean-forward="true" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+            <state relative-caret-position="249">
+              <caret line="26" column="48" lean-forward="true" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#Fridge#0;class#Fridge#0" expanded="true" />
+                <element signature="method#run#0;class#Fridge#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Persons/Buyer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="48" column="110" selection-start-line="48" selection-start-column="110" selection-end-line="48" selection-end-column="110" />
+            <state relative-caret-position="288">
+              <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Buyer#0;class#Buyer#0" expanded="true" />
                 <element signature="e#932#1009#0" expanded="true" />
+                <element signature="e#3709#3710#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -130,6 +130,7 @@
       <find>ользователь обдумывает новый</find>
       <find>получил ответ от</find>
       <find>buyer_1</find>
+      <find>ждет</find>
       <find>1500</find>
     </findStrings>
     <replaceStrings>
@@ -164,11 +165,11 @@
         <option value="$PROJECT_DIR$/src/main/java/Message/Message_Fridge.java" />
         <option value="$PROJECT_DIR$/src/main/java/kek/Cook.java" />
         <option value="$PROJECT_DIR$/src/main/java/Persons/Cook.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Persons/Fridge.java" />
         <option value="$PROJECT_DIR$/src/main/java/Persons/Courier.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Start/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/Persons/Dispatcher.java" />
         <option value="$PROJECT_DIR$/src/main/java/Persons/Buyer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Start/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Persons/Fridge.java" />
       </list>
     </option>
   </component>
@@ -318,11 +319,18 @@
       <option name="project" value="LOCAL" />
       <updated>1573832302511</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Заказ доходит до покупателя, бабки до курьера. Пользователь заказывает новый заказ. Ресурсы кончаются. Отказ от повара приходит, отказ до покупателя приходит.">
+      <created>1573871855026</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1573871855026</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28210000" />
+    <option name="totallyTimeSpent" value="28912000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -338,7 +346,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.9490085" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.93342775" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.42634562" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -366,16 +374,17 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="на блокирующих очередях. Проблема с двумя входами у покупателя" />
     <MESSAGE value="1" />
-    <option name="LAST_COMMIT_MESSAGE" value="1" />
+    <MESSAGE value="Заказ доходит до покупателя, бабки до курьера. Пользователь заказывает новый заказ. Ресурсы кончаются. Отказ от повара приходит, отказ до покупателя приходит." />
+    <option name="LAST_COMMIT_MESSAGE" value="Заказ доходит до покупателя, бабки до курьера. Пользователь заказывает новый заказ. Ресурсы кончаются. Отказ от повара приходит, отказ до покупателя приходит." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Persons/Dispatcher.java</url>
-          <line>49</line>
+          <url>file://$PROJECT_DIR$/src/main/java/Persons/Buyer.java</url>
+          <line>55</line>
           <properties />
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -478,43 +487,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Persons/Cook.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="39" selection-start-line="39" selection-end-line="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#coocking#0;class#Cook#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Persons/Fridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="94" column="9" lean-forward="true" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Fridge#0;class#Fridge#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Start/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="61" column="75" selection-start-line="61" selection-start-column="67" selection-end-line="61" selection-end-column="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#print#0;class#Main#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Persons/Dispatcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="69" column="45" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="45" />
+        <state relative-caret-position="347">
+          <caret line="57" column="46" lean-forward="true" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Dispatcher#0;class#Dispatcher#0" expanded="true" />
@@ -525,12 +501,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Persons/Buyer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="48" column="110" selection-start-line="48" selection-start-column="110" selection-end-line="48" selection-end-column="110" />
+        <state relative-caret-position="288">
+          <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Buyer#0;class#Buyer#0" expanded="true" />
             <element signature="e#932#1009#0" expanded="true" />
+            <element signature="e#3709#3710#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Start/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#print#0;class#Main#0" expanded="true" />
+            <element signature="method#Main#0;class#Main#0" expanded="true" />
+            <element signature="e#1694#1708#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Persons/Cook.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="39" selection-start-line="39" selection-end-line="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#coocking#0;class#Cook#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Persons/Fridge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="26" column="48" lean-forward="true" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#run#0;class#Fridge#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -29,8 +29,8 @@ public class Fridge extends Person implements Runnable {
         countProducts.put(Products.Cheese, 1000);
         countProducts.put(Products.Tomatoes, 1000);
         countProducts.put(Products.Mushrooms, 1000);
-        countProducts.put(Products.Cutlet, 1000);
-        countProducts.put(Products.Bun, 1000);
+        countProducts.put(Products.Cutlet, 3);
+        countProducts.put(Products.Bun, 3);
     }
 
     @Override
@@ -67,6 +67,11 @@ public class Fridge extends Person implements Runnable {
 
                 if (flag_enough_products) {
                     // Всех продуктов хватает
+
+                    messageToCook.setStatus(1);
+                    Main.print(super.getPersonName() + " Необходимые продукты в наличии, отправляем их повару ");
+                    sleep(Main._1500);
+
                     for (Map.Entry<Products, Integer> current : takedMessage.getCountProducts().entrySet()) {
                         Products needProduct = current.getKey();
                         Integer needCount = current.getValue();
@@ -76,11 +81,9 @@ public class Fridge extends Person implements Runnable {
                             flag_enough_products = false;
                             countProducts.put(needProduct, countProducts.get(needProduct) - needCount);
                             messageToCook.getCountProducts().put(needProduct, needCount);
+                            Main.print(super.getPersonName() + needProduct.toString() + " осталось " + countProducts.get(needProduct) );
                         }
                     }
-                    messageToCook.setStatus(1);
-                    Main.print(super.getPersonName() + " Необходимые продукты в наличии, отправляем их повару ");
-                    sleep(Main._1500);
                 } else {
                     // Какого то продукта не хватает
                     messageToCook.setStatus(0);

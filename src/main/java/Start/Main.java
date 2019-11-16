@@ -22,8 +22,8 @@ public class Main {
 
     private static final Exchanger<Message_Base> EXCHANGER = new Exchanger<>();
 
-    public static final Integer _1500 = 150;
-    public static final Integer _1000 = 100;
+    public static final Integer _1500 = 150 * 5;
+    public static final Integer _1000 = 100 * 5;
 
     public static Semaphore semaphorePrint = new Semaphore(1, true);
 
