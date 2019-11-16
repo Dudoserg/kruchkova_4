@@ -1,7 +1,6 @@
 package Start;
 
 
-
 import Message.Message_Base;
 import Message.Message_Fridge;
 import Persons.*;
@@ -23,17 +22,20 @@ public class Main {
 
     private static final Exchanger<Message_Base> EXCHANGER = new Exchanger<>();
 
-    public static Semaphore semaphorePrint = new Semaphore(1,true);
+    public static final Integer _1500 = 150;
+    public static final Integer _1000 = 100;
 
-    public static void print(String str){
+    public static Semaphore semaphorePrint = new Semaphore(1, true);
+
+    public static void print(String str) {
         try {
             LocalTime localTime = LocalTime.now();
-            String currentTime = "[ " + localTime.getHour() + ":" + localTime.getMinute() + ":" + localTime.getSecond() ;
-            if(localTime.getHour() < 10)
+            String currentTime = "[ " + localTime.getHour() + ":" + localTime.getMinute() + ":" + localTime.getSecond();
+            if (localTime.getHour() < 10)
                 currentTime += " ";
-            if(localTime.getMinute() < 10)
+            if (localTime.getMinute() < 10)
                 currentTime += " ";
-            if(localTime.getSecond() < 10)
+            if (localTime.getSecond() < 10)
                 currentTime += " ";
             currentTime += " ]";
             semaphorePrint.acquire();
@@ -57,11 +59,11 @@ public class Main {
         BlockingQueue<Message_Base> blocking_To_Courier = new ArrayBlockingQueue<Message_Base>(1, true);
         BlockingQueue<Message_Fridge> blocking_To_Fridge = new ArrayBlockingQueue<Message_Fridge>(1, true);
 
-        Person dispatcher = new Dispatcher( blocking_To_Dispatcher, blocking_To_Buyer, blocking_Dispatcher_Cook, "dispatcher");
-        Person buyer_1 = new Buyer(blocking_To_Buyer, blocking_To_Dispatcher,  "buyer_1");
-        Person cook = new Cook(blocking_Dispatcher_Cook, blocking_Fridge_Cook, blocking_To_Dispatcher, blocking_To_Fridge,blocking_To_Courier, "cook");
+        Person dispatcher = new Dispatcher(blocking_To_Dispatcher, blocking_To_Buyer, blocking_Dispatcher_Cook, "dispatcher");
+        Person buyer_1 = new Buyer(blocking_To_Buyer, blocking_To_Dispatcher, blocking_To_Courier, "buyer_1");
+        Person cook = new Cook(blocking_Dispatcher_Cook, blocking_Fridge_Cook, blocking_To_Dispatcher, blocking_To_Fridge, blocking_To_Courier, "cook");
         Person fridge = new Fridge(blocking_To_Fridge, blocking_Fridge_Cook, "fridge");
-        Person courier = new Courier(blocking_To_Courier, blocking_To_Dispatcher, "courier");
+        Person courier = new Courier(blocking_To_Courier, blocking_To_Dispatcher, blocking_To_Buyer, "courier");
 
 //        ((Dispatcher) dispatcher).setByuer((Buyer) buyer_1);
 
@@ -74,7 +76,7 @@ public class Main {
         list_Runnable.add(courier);
 
         // Список потоков
-        List<Thread> list_Thread =list_Runnable.stream().map(runnable -> new Thread(runnable)).collect(Collectors.toList());
+        List<Thread> list_Thread = list_Runnable.stream().map(runnable -> new Thread(runnable)).collect(Collectors.toList());
 
         // Запускаем потоки
         for (int i = 0; i < list_Thread.size(); i++) {
