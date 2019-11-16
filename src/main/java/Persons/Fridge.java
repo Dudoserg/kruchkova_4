@@ -59,7 +59,7 @@ public class Fridge extends Person implements Runnable {
                         Main.print(super.getPersonName() + needProduct.toString() + " в количестве " + needCount + " ОТСУТСТВУЕТ");
                         flag_enough_products = false;
                     }
-                    sleep(Main._1000 * 1);
+                    sleep(Main._1000 );
                 }
 
                 Main.print(super.getPersonName() + " Проверка закончена ");

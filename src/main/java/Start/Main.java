@@ -6,6 +6,11 @@ import Message.Message_Fridge;
 import Persons.*;
 import kek.*;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +27,8 @@ public class Main {
 
     private static final Exchanger<Message_Base> EXCHANGER = new Exchanger<>();
 
-    public static final Integer _1500 = 150 * 5;
-    public static final Integer _1000 = 100 * 5;
+    public static final Integer _1500 = 3;
+    public static final Integer _1000 = 3;
 
     public static Semaphore semaphorePrint = new Semaphore(1, true);
 
@@ -40,6 +45,17 @@ public class Main {
             currentTime += " ]";
             semaphorePrint.acquire();
             System.out.println(currentTime + "  " + str);
+
+            String filePath = "data.txt";
+
+            try {
+                Files.write(Paths.get(filePath), (str + "\n" ).getBytes() , StandardOpenOption.APPEND);
+            }
+            catch (IOException e) {
+                System.out.println(e);
+            }
+
+
             semaphorePrint.release();
 
         } catch (InterruptedException e) {
@@ -69,6 +85,7 @@ public class Main {
 
         // Список задач
         List<Runnable> list_Runnable = new ArrayList<>();
+
         list_Runnable.add(dispatcher);
         list_Runnable.add(buyer_1);
         list_Runnable.add(cook);

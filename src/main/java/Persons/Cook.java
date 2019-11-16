@@ -47,7 +47,7 @@ public class Cook extends Person implements Runnable {
                 sleep(Main._1500);
 
                 Main.print(super.getPersonName() + " Вспоминает рецепт...");
-                sleep(2500);
+                sleep(Main._1500);
 
 
                 // Todo переделать на класс блюд с рецептами
